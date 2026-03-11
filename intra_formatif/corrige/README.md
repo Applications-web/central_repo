@@ -3,11 +3,17 @@
 Bienvenue dans cet examen de refactorisation. Votre mission est de transformer une application "monolithique" et répétitive en une structure de composantes React moderne, propre et dynamique.
 
 ## 📋 Consignes Générales
-* **Git :** 
+**Git :** 
 - Vous devez commencer par cloner le repo_central. Une fois ceci fait, clonez également votre repo personnel dans un autre dossier.
-- Vous devez ensuite faire un premier commit+push dans votre répertoire personnel, avec l'énoncé pris du repo_central sans modification. Vous devez le mettre dans le dossier /intra.
+- Vous devez ensuite faire un premier commit+push dans votre répertoire personnel, avec le code complet de l'énoncé pris du repo_central sans modification. Vous devez le mettre dans le dossier /intra.
 - Vous devez effectuer **exactement 1 commit par exercice** (total de 4 avec le premier push) avec les messages indiqués. L'heure des commits sera vérifiée.
-* **Qualité :** La propreté du code et le respect des normes seront prises en compte dans la note.
+
+**Vérification :**
+- Une fois votre code poussé sur Github, utilisez npm i pour installer les node_modules.
+- Ensuite, tapez npm run dev pour rouler votre projet.
+  
+**Qualité :**
+- La propreté du code et le respect des normes seront prises en compte dans la note.
 
 ---
 
