@@ -4,10 +4,19 @@ export default function DestinationList({ items }) {
     <section className="exo-3">
       <h2>Destinations</h2>
       <ul>
-        {items.map(item =>
-          <li>{item.name} - {item.price} (Départ: {item.date})</li>
+        {items.map((item, index) =>
+          <li key={index}>  {item.name} - {item.price} (Départ: {item.date})</li>
         )}
       </ul>
     </section>
   );
 }
+
+/* Note le index et le key sont un bonus de 20%.
+
+<ul>
+  {items.map(item =>
+    <li>  {item.name} - {item.price} (Départ: {item.date})</li>
+  )}
+</ul>
+*/

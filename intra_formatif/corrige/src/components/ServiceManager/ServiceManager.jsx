@@ -9,12 +9,11 @@ export default function ServiceManager() {
   return (
     <section className="exo-1">
       {/* Premier Bloc : A( B C B ) */}
-      <div className="comp-a" style={{border: '1px solid red', padding: '10px'}}>
-        <h2>Service Global Alpha</h2>
+      <ComponentA>
         <ComponentB/>
         <ComponentC/>
         <ComponentB/>
-      </div>
+      </ComponentA>
 
       <br />
 
@@ -26,3 +25,6 @@ export default function ServiceManager() {
     </section>
   );
 }
+
+// Note: ComponentA est un bonus de 20%. 
+// Vous pouvez faire seulement les composantes enfant.
