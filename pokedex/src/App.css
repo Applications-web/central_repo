@@ -1,0 +1,143 @@
+.pokedex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #121212;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.pokemon-card {
+  text-align: center;
+  padding: 30px;
+  border: 2px solid #333;
+  border-radius: 15px;
+  background-color: #1e1e1e;
+}
+
+.types-container {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.type-badge {
+  padding: 5px 15px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+}
+
+.id-tag {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.info-section {
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+  text-transform: capitalize;
+}
+
+.ability-text {
+  margin-left: 5px;
+  color: #4db8ff;
+}
+
+.controls button {
+  padding: 10px 20px;
+  background: #333;
+  color: #fff;
+  border: 1px solid #444;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.controls button:hover:not(:disabled) {
+  background: #ff1c1c;
+}
+.search-form {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 5px;
+}
+
+.search-form input {
+  padding: 10px 15px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #444;
+  background: #222;
+  color: white;
+  outline: none;
+  width: 200px;
+}
+
+.search-form button {
+  padding: 10px 15px;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  background: #ff1c1c;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background: #cc1616;
+}
+
+.pokemon-card {
+  min-width: 320px;
+}
+
+.pokeball {
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border: 4px solid #000;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 15px;
+}
+
+.pokeball::before {
+  content: "";
+  position: absolute;
+  background-color: #ff1c1c;
+  width: 100%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  border-bottom: 4px solid #000;
+}
+
+.pokeball::after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  width: 12px;
+  height: 12px;
+  border: 4px solid #000;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  letter-spacing: 3px;
+  font-weight: bold;
+}
