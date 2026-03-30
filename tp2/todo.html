@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 500px;
+            max-width: 90%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .todo-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .todo-input input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .todo-input button {
+            padding: 10px 15px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .todo-list {
+            list-style: none;
+            padding: 0;
+        }
+        .todo-item {
+            background: #f9f9f9;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        .todo-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .done-button, .delete-button {
+            padding: 6px 10px;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .done-button {
+            background: #28a745;
+        }
+        .done-button.undone {
+            background: #ffc107;
+        }
+        .delete-button {
+            background: #dc3545;
+        }
+        .todo-text.done {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Todo List</h1>
+        <form class="todo-input">
+            <input type="text" placeholder="Add a new task...">
+            <button>Ajouter</button>
+        </form>
+        <ul class="todo-list">
+            <li class="todo-item">
+                <p class="todo-text"> Promener le chien</p>
+                <div class="todo-buttons">
+                    <button class="done-button">✔</button>
+                    <button class="delete-button" >✖</button>
+                </div>
+            </li>
+            <li class="todo-item">
+                <p class="todo-text">Faire le ménage</p>
+                <div class="todo-buttons">
+                    <button class="done-button">✔</button>
+                    <button class="delete-button">✖</button>
+                </div>
+            </li>
+            <li class="todo-item">
+                <p class="todo-text">Faire le TP2</p>
+                <div class="todo-buttons">
+                    <button class="done-button">✔</button>
+                    <button class="delete-button">✖</button>
+                </div>
+            </li>
+            <li class="todo-item">
+                <p class="todo-text done">Maitriser styles dynamiques</p>
+                <div class="todo-buttons">
+                    <button class="done-button undone">↩</button>
+                    <button class="delete-button">✖</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
