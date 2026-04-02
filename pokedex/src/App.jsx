@@ -36,7 +36,7 @@ React.useEffect(() => {
           // resets to Pokemon no 1
           setId(1)
         })
-    }, 500)
+    }, 200)
 
     return () => clearTimeout(timer)
   }, [id])

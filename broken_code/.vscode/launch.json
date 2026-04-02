@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Debug Vite",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "vite://devices/browser/*": "${workspaceFolder}/*",
+                "/src/*": "${workspaceFolder}/src/*"
+            },
+            "cascade": true
+        }
+    ]
+}
