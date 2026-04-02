@@ -4,7 +4,9 @@ const TripleSetter = () => {
   const [score, setScore] = useState(0);
 
   const handlePowerUp = () => {
-    debugger
+    // BUG : Mise en lot (Batching) de l'état. 
+    // React utilise la valeur de 'score' au moment du clic pour les trois appels.
+    // Résultat attendu : +3 | Résultat obtenu : +1.
     setScore(score + 1);
     setScore(score + 1);
     setScore(score + 1);
@@ -12,17 +14,20 @@ const TripleSetter = () => {
 
   return (
     <div style={{ border: '1px solid #ccc', margin: '10px', padding: '10px' }}>
-      <h3>1. Challenge</h3>
-      <p>Score: {score}</p>
-      <button onClick={handlePowerUp}>Execute Logic</button>
+      <h3>1. Défi : Le Triple Score</h3>
+      <p>Score : {score}</p>
+      <button onClick={handlePowerUp}>Augmenter le score</button>
     </div>
   );
 };
 
 const ProfileEditor = () => {
-  const [user, setUser] = useState({ name: "Phil", role: "Teacher" });
+  const [user, setUser] = useState({ name: "Phil", role: "Enseignant" });
 
   const handleUpdate = (newName) => {
+    // BUG : Mutation directe de l'état.
+    // 'tempUser' pointe vers la même adresse mémoire que 'user'.
+    // React ne détecte pas de changement de référence, donc il ne déclenche pas de rendu.
     const tempUser = user; 
     tempUser.name = newName; 
     setUser(tempUser);
@@ -30,60 +35,69 @@ const ProfileEditor = () => {
 
   return (
     <div style={{ border: '1px solid #ccc', margin: '10px', padding: '10px' }}>
-      <h3>2. Challenge</h3>
-      <p>User: {user.name}</p>
-      <input onChange={(e) => handleUpdate(e.target.value)} />
+      <h3>2. Défi : Éditeur de Profil</h3>
+      <p>Utilisateur : {user.name}</p>
+      <input 
+        placeholder="Nouveau nom"
+        onChange={(e) => handleUpdate(e.target.value)} 
+      />
     </div>
   );
 };
 
-const InfiniteTracker = () => {
-  const [count, setCount] = useState(0);
+const ChatBox = () => {
+  const [text, setText] = useState("");
+  const [messagePret, setMessagePret] = useState("");
 
-  useEffect(() => {
-    setCount(count + 1);
-  }); 
+  const handleSend = () => {
+    // BUG : Décalage d'état (stale state). 'messagePret' ne sera mis à jour 
+    // que lors du prochain rendu. L'alerte utilise l'ancienne valeur.
+    setMessagePret(text); 
 
-  return (
-    <div style={{ border: '1px solid #ccc', margin: '10px', padding: '10px' }}>
-      <h3>3. Challenge</h3>
-      <p>Count: {count}</p>
-    </div>
-  );
-};
-
-const TimeTraveler = () => {
-  const [message, setMessage] = useState("");
-
-  const handleDelayedAlert = () => {
-    setTimeout(() => {
-      alert("Value: " + message);
-    }, 3000);
+    alert("Serveur a reçu : " + messagePret);
+    
+    setText(""); 
   };
 
   return (
     <div style={{ border: '1px solid #ccc', margin: '10px', padding: '10px' }}>
-      <h3>4. Challenge</h3>
+      <h3>3. Défi : Le Message à Retardement</h3>
       <input 
-        value={message} 
-        onChange={(e) => setMessage(e.target.value)} 
+        value={text} 
+        onChange={(e) => setText(e.target.value)} 
+        placeholder="Tapez votre message..."
       />
-      <button onClick={handleDelayedAlert}>Process</button>
+      <button onClick={handleSend}>Envoyer</button>
+      
+      <p style={{fontSize: '0.8em', color: '#666'}}>
+      </p>
     </div>
   );
 };
 
-const AdminPanel = ({ isAdmin }) => {
-  if (isAdmin) {
-    const [adminSecret] = useState("TOP_SECRET");
-  }
+const SearchDashboard = () => {
+  const [query, setQuery] = useState("");
+  const [filters, setFilters] = useState({ type: 'tous' });
 
-  const [theme] = useState("System Default");
+  // BUG : Boucle infinie de rendus.
+  // L'objet { type: 'tous' } est recréé à chaque rendu (nouvelle référence).
+  // useEffect détecte ce "nouveau" filtre, met à jour l'état, et recommence.
+  // Regarder la console: les erreurs s'accumulent
+  useEffect(() => {
+    console.log("Recherche des résultats en cours...");
+    setFilters({ type: 'tous' }); 
+  }, [filters]); 
 
   return (
     <div style={{ border: '1px solid #ccc', margin: '10px', padding: '10px' }}>
-      <h3>5. Challenge</h3>
-      <p>Config: {theme}</p>
+      <h3>4. Défi : Tableau de Recherche</h3>
+      <input 
+        value={query} 
+        onChange={(e) => setQuery(e.target.value)} 
+        placeholder="Rechercher..." 
+      />
+      <p>Filtre actif : {filters.type}</p>
+      <small>(Vérifiez la console pour voir la boucle infinie !)</small>
     </div>
   );
 };
@@ -91,13 +105,13 @@ const AdminPanel = ({ isAdmin }) => {
 export default function App() {
   return (
     <div style={{ fontFamily: 'sans-serif', padding: '20px' }}>
-      <h1>React Debugging Lab</h1>
+      <h1>Laboratoire de Débogage React</h1>
+      <p>Utilisez les outils de développement (F12) pour inspecter l'état.</p>
       <hr />
       <TripleSetter />
       <ProfileEditor />
-      <InfiniteTracker />
-      <TimeTraveler />
-      <AdminPanel isAdmin={true} />
+      <ChatBox/>
+      <SearchDashboard />
     </div>
   );
 }
