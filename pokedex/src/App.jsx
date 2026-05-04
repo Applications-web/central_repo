@@ -84,10 +84,10 @@ React.useEffect(() => {
 
       <div className="pokemon-card">
         <div className="types-container">
-          {pokemon.types.map((t, i) => (
+          {['t','m'].map((t, i) => (
             // grey is the default color when no type in TYPE_COLORS matches
-            <span key={i} className="type-badge" style={{ backgroundColor: TYPE_COLORS[t.type.name] || "#777" }}>
-              {t.type.name.toUpperCase()}
+            <span className="type-badge" style={{ backgroundColor: "#777" }}>
+              {i+t}
             </span>
           ))}
         </div>

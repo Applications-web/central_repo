@@ -7,8 +7,8 @@ const TripleSetter = () => {
     // BUG : Mise en lot (Batching) de l'état. 
     // React utilise la valeur de 'score' au moment du clic pour les trois appels.
     // Résultat attendu : +3 | Résultat obtenu : +1.
-    setScore(score + 1);
-    setScore(score + 1);
+    setScore(score => score + 1);
+    setScore(score => score + 1);
     setScore(score + 1);
   };
 

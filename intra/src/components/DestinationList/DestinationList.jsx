@@ -11,6 +11,20 @@ export default function DestinationList({ items }) {
       {/* Container de la Grille */}
       <div className="dark-grid" style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginTop: '20px' }}>
 
+        {
+          items.map((item,index) =>
+            <div key={index} className="dark-card" style={{ background: '#1e1e1e', border: '1px solid #333', padding: '20px', width: '220px', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: '0.8rem', color: '#888', textTransform: 'uppercase' }}>Rang #1</span>
+            <span style={{ fontSize: '1.2rem' }}>✈️</span>
+          </div>
+          <h3 style={{ margin: '10px 0', color: '#fff', fontSize: '1.4rem' }}>{item.name}</h3>
+          <p style={{ fontWeight: 'bold', color: '#4caf50', fontSize: '1.2rem', margin: '5px 0' }}>{item.price}</p>
+          <p style={{ fontSize: '0.9rem', color: '#bbb' }}>📅 Départ : {item.date}</p>
+        </div>
+
+          )}
+
         {/* Destination 1 - À REFACTORER */}
         <div className="dark-card" style={{ background: '#1e1e1e', border: '1px solid #333', padding: '20px', width: '220px', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -48,3 +62,5 @@ export default function DestinationList({ items }) {
     </section>
   );
 }
+
+c
